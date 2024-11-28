@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [18.x, 20.x, 22.x]
 
     steps:
     - name: Checkout code
@@ -48,5 +48,3 @@ jobs:
     # Cypress Tests para ambas as branches
     - name: Run Cypress tests
       run: npm run cy:run
-      env:
-        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

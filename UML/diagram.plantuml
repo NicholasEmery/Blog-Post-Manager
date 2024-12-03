@@ -1,0 +1,21 @@
+@startuml
+actor Usuário
+actor Sistema
+
+Usuário -> (Listar Postagens)
+Usuário -> (Inserir Postagem)
+Usuário -> (Alterar Postagem)
+Usuário -> (Excluir Postagem)
+Usuário -> (Visualizar Postagem)
+
+(Listar Postagens) --> (Exibir Tabela de Postagens)
+(Inserir Postagem) --> (Preencher Formulário de Inserção)
+(Alterar Postagem) --> (Preencher Formulário de Edição)
+(Excluir Postagem) --> (Confirmar Exclusão)
+
+(Sistema) --> (API GET /posts) : Consome API para listar postagens
+(Sistema) --> (API POST /posts) : Consome API para inserir postagem
+(Sistema) --> (API PUT /posts/{id}) : Consome API para atualizar postagem
+(Sistema) --> (API DELETE /posts/{id}) : Consome API para excluir postagem
+
+@enduml

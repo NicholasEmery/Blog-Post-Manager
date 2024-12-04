@@ -1,0 +1,19 @@
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: normal;
+  }
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+body{
+    background-color: #F8F8F8;
+}
+footer{
+    background-color: #F2F2F2;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+}

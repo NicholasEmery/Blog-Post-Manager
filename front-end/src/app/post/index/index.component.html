@@ -1,0 +1,25 @@
+<div class="container my-5">
+  <!-- Título e Botão -->
+  <div class="text-center mb-4">
+    <h1>Últimas Postagens</h1>
+    <a [routerLink]="['/post/create']" class="btn btn-success">Criar Nova Postagem</a>
+  </div>
+
+  <!-- Cards de Postagens -->
+  <div class="row g-4">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let post of posts">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title" id="ids">ID: {{ post.id }}</h5>
+          <h6 class="card-subtitle mb-2">{{ post.title }}</h6>
+          <p class="card-text">{{ post.body }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <a [routerLink]="['/post/', post.id, 'view']" class="btn btn-info btn-sm">Visualizar</a>
+          <a [routerLink]="['/post/', post.id, 'edit']" id="edit" class="btn btn-primary btn-sm">Editar</a>
+          <button type="button" (click)="deletePost(post.id)" id="delete" class="btn btn-danger btn-sm">Deletar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

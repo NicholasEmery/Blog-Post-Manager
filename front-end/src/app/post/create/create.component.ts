@@ -1,33 +1,41 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { PostService } from '../post.service';
+import { Router } from '@angular/router';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-post-create',
+  selector: 'app-create',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './create.component.html',
-  styleUrls: ['./post-.component.scss']
+  styleUrl: './create.component.css'
 })
-export class PostCreateComponent {
-  form: FormGroup;
+export class CreateComponent {
+
+  form!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private postService: PostService,
+    public postService: PostService,
     private router: Router
-  ) {
-    this.form = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(3)]],
-      body: ['', [Validators.required, Validators.minLength(5)]],
-      userId: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+  ) { }
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      title: new FormControl('', [Validators.required]),
+      body: new FormControl('', Validators.required)
     });
   }
 
-  createPost(): void {
-    if (this.form.valid) {
-      this.postService.create(this.form.value).subscribe(() => {
-        this.router.navigateByUrl('/posts');
-      });
-    }
+  get f() {
+    return this.form.controls;
+  }
+
+  submit() {
+    console.log(this.form.value);
+    this.postService.create(this.form.value).subscribe((res: any) => {
+      console.log('Post criado com sucesso!');
+      this.router.navigateByUrl('post/index');
+    });
   }
 }

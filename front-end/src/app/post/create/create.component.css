@@ -1,0 +1,27 @@
+h1{
+    color: #01347C;
+    font-weight: bolder;
+    font-size: 35px;
+}
+
+#enviar{
+    background-color: rgba(0, 128, 0, 0.89);
+}
+#enviar:hover {
+    transform: scale(1.05);
+    background-color: green;
+}
+
+.btn {
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+.btn {
+    font-size: 0.85rem;
+    background-color: #01347C;
+    color: whitesmoke;
+    border: none;
+}

@@ -1,0 +1,53 @@
+<div class="container my-5">
+  
+  <!-- Título -->
+  <h1 class="text-center mb-4">Atualizar Postagem</h1>
+
+  <!-- Formulário -->
+  <div class="d-flex justify-content-center">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="w-50">
+      
+      <!-- Campo Título -->
+      <div class="form-group mb-3">
+        <label for="title" class="form-label">Título:</label>
+        <input
+          formControlName="title"
+          id="title"
+          type="text"
+          [(ngModel)]="post.title"
+          class="form-control"
+          placeholder="Digite o título">
+        <div *ngIf="f['title'].touched && f['title'].invalid" class="alert alert-danger mt-2">
+          <div *ngIf="f['title'].errors && f['title'].errors['required']">
+            O título é obrigatório.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo Conteúdo -->
+      <div class="form-group mb-3">
+        <label for="body" class="form-label">Conteúdo:</label>
+        <textarea
+          formControlName="body"
+          id="body"
+          rows="5"
+          [(ngModel)]="post.body"
+          class="form-control"
+          placeholder="Digite o conteúdo">
+        </textarea>
+        <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger mt-2">
+          <div *ngIf="f['body'].errors && f['body'].errors['required']">
+            O conteúdo é obrigatório.
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="text-center">
+        <button class="btn btn-primary me-2" id="edit" type="submit" [disabled]="!form.valid">Atualizar</button>
+        <a routerLink="/post/index" id="cancelar" class="btn btn-secondary me-2">Cancelar</a>
+        <a routerLink="/post/index" class="btn btn-secondary">Voltar</a>
+      </div>
+    </form>
+  </div>
+</div>

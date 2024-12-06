@@ -1,0 +1,28 @@
+<div class="container my-5">
+  <!-- Título -->
+  <h1 class="text-center mb-4">Visualizar Postagem</h1>
+
+  <!-- Detalhes da Postagem -->
+  <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-body">
+      <div class="mb-3">
+        <strong>ID:</strong>
+        <p class="mb-0">{{ post.id }}</p>
+      </div>
+
+      <div class="mb-3">
+        <strong>Título:</strong>
+        <p class="mb-0">{{ post.title }}</p>
+      </div>
+
+      <div class="mb-3">
+        <strong>Conteúdo:</strong>
+        <p class="mb-0">{{ post.body }}</p>
+      </div>
+    </div>
+  </div>
+    <!-- Botão Voltar -->
+    <div class="text-center mt-4">
+      <a routerLink="/post/index" class="btn btn-secondary">Voltar</a>
+    </div>
+</div>
